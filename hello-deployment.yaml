@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-deployment
+  labels:
+    name: front-end-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      name: front-hello-1
+      labels:
+       env: dev
+    spec:
+      containers: 
+        - name: hello-kubernetes
+          image: clintomed/hello-kubernetes:0.1.0
+          ports:
+            -  containerPort: 3000
+               protocol: TCP
